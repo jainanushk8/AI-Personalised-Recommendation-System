@@ -1,0 +1,46 @@
+# Dockerfile for Backend
+FROM node:14
+
+WORKDIR /usr/src/app
+
+COPY backend/package*.json ./
+
+RUN npm install
+
+COPY backend/ .
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+
+# Dockerfile for Frontend
+FROM node:14
+
+WORKDIR /usr/src/app
+
+COPY frontend/package*.json ./
+
+RUN npm install
+
+COPY frontend/ .
+
+RUN npm run build
+
+EXPOSE 5000
+
+CMD ["npx", "serve", "-s", "build"]
+
+# Dockerfile for ML Models API
+FROM python:3.8
+
+WORKDIR /usr/src/app
+
+COPY ml_models/api/requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ml_models/api/ .
+
+EXPOSE 5001
+
+CMD ["python", "app.py"]

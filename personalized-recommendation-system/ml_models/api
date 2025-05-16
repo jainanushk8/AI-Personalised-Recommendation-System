@@ -1,0 +1,24 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List
+
+app = FastAPI()
+
+class RecommendationRequest(BaseModel):
+    user_id: int
+    query: str
+
+class RecommendationResponse(BaseModel):
+    videos: List[str]
+    articles: List[str]
+    answers: List[str]
+
+@app.post("/recommendations", response_model=RecommendationResponse)
+async def get_recommendations(request: RecommendationRequest):
+    # Placeholder for recommendation logic
+    # In a real implementation, this would call the appropriate ML models
+    return RecommendationResponse(
+        videos=["video1", "video2"],
+        articles=["article1", "article2"],
+        answers=["answer1", "answer2"]
+    )

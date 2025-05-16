@@ -1,0 +1,18 @@
+fastapi
+uvicorn
+pydantic
+numpy
+scikit-learn
+pandas
+joblib
+nltk
+spacy
+gensim
+scipy
+xgboost
+lightgbm
+tensorflow
+torch
+transformers
+sentence-transformers
+# Add/remove as needed for your specific ML models

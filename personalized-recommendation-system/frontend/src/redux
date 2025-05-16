@@ -1,0 +1,11 @@
+import { ADD_RECOMMENDATION, REMOVE_RECOMMENDATION } from './types';
+
+export const addRecommendation = (recommendation) => ({
+    type: ADD_RECOMMENDATION,
+    payload: recommendation,
+});
+
+export const removeRecommendation = (id) => ({
+    type: REMOVE_RECOMMENDATION,
+    payload: id,
+});
